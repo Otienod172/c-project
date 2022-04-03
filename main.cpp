@@ -47,30 +47,31 @@ int main() {
         //main();
         break;
     case 2:
-        switch (choice) {
-    case 1:
-        try {
-            employee.validateLogin();
-        }
-        catch(const string msg) {
-            cout << msg << endl;
-            cin >> retry;
-            switch (retry) {
-            case 1:
-                cout << "Try again!" << endl;
-                main();
-            case 2:
-                exit(0);
-            }
-        }
-        cin.ignore();
-        system("CLS");
-        manaChoices.displayManagerActions();
-        //main();
-        break;
-    case 3:
-        exit(0);
 
-    }
+
+            try {
+                employee.validateLogin();
+            }
+            catch(const string msg) {
+                cout << msg << endl;
+                cin >> retry;
+                switch (retry) {
+                case 1:
+                    cout << "Try again!" << endl;
+                    main();
+                case 2:
+                    exit(0);
+                }
+            }
+            cin.ignore();
+            system("CLS");
+            manaChoices.displayManagerActions();
+            //main();
+            break;
+
+      case 3:
+            exit(0);
+            }
     return 0;
 }
+

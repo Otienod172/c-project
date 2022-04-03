@@ -4,6 +4,7 @@
 #include<fstream>
 #include <stdlib.h>
 #include <sstream>
+#include <iomanip>
 #pragma once
 
 using namespace std;
@@ -33,7 +34,7 @@ class EmployeeActions{
         void viewFile(string);
 };
 
-
+// read file containing bank account details
 void EmployeeActions::readFile(){
     int i = 0;
 
@@ -56,7 +57,7 @@ void EmployeeActions::readFile(){
     }
 
 }
-
+// write bank account details into file
 void EmployeeActions::writeFile(){
     int i;
     ofstream fileToWrite;
@@ -71,26 +72,26 @@ void EmployeeActions::writeFile(){
     }
 }
 
+// list all bank accounts
 void EmployeeActions::listAccounts(){
     int i, index = 0;
 
     cout << "All accounts" << endl;
     cout << "============" << endl;
-    cout<<"No.\t||\tAccount No.\t||\tAccount Type\t||\tFirst name\t||\tLast name\t||\tPhone number\t||\tBalance\t||\n" << endl;
+    cout<<"No.\t||\tAccount No.\t||\tAccount Type\t||\tFirst name\t||\tLast name\t||\tPhone number\t||\tBalance\t\t||\n" << endl;
 
     for (i = 0; i < maxEntries; i++) {
         if (accountNumber[i] != "\0") {
             index++;
-            cout << "\t" << index << "\t\t" << accountNumber[i] << "\t\t" << accountType[i] << "\t\t" << firstName[i] << "\t\t" << lastName[i] << "\t\t" << phoneNumber[i] << "\t\t" << balance[i]<< endl;
+            cout << index << setw(20)  << accountNumber[i] << setw(30) << accountType[i]  <<
+            setw(20)  << firstName[i] << setw(25)  << lastName[i]  << setw(25)  << phoneNumber[i] << setw(20)  << balance[i] << endl;
         }
     }
     cin.ignore();
-    // else{
-    //     cout << "No account in database" << endl;
-    // }
 
 }
 
+// create new bank account
 void EmployeeActions::createAccount(){
     int i;
     char accId[10];
@@ -144,19 +145,21 @@ void EmployeeActions::createAccount(){
 
 }
 
+// search for bank account
 void EmployeeActions::searchAccount(string accNo){
     int i;
     int index = 0;
     system("CLS");
     cout << "Current Booking" << endl;
     cout << "=================" << endl;
-    cout<<"No.\t||\tAccount No.\t||\tAccount Type\t||\tFirst name\t||\tLast name\t||\tPhone number\t||\tBalance\t||\n" << endl;
+    cout<<"||\tNo.\t||\tAccount No.\t||\tAccount Type\t||\tFirst name\t||\tLast name\t||\tPhone number\t||\tBalance\t\t||\n" << endl;
 
     // interate through file and find acc no that matches
     for (i = 0; i<maxEntries;i++){
         if (accountNumber[i] == accNo){
             index++;
-            cout << "\t\t" << index << "\t\t" << accountNumber[i] << "\t\t" << accountType[i] << "\t\t" << firstName[i] << "\t\t" << lastName[i] << "\t\t" << phoneNumber[i] << "\t\t" << balance[i]<< endl;
+            cout << index << setw(20)  << accountNumber[i] << setw(30) << accountType[i]  <<
+            setw(20)  << firstName[i] << setw(25)  << lastName[i]  << setw(25)  << phoneNumber[i] << setw(20)  << balance[i] << endl;
             break;
         }
     }
@@ -169,6 +172,7 @@ void EmployeeActions::searchAccount(string accNo){
     system("CLS");
 }
 
+// update bank account details
 void EmployeeActions::updateAccount(string accNo){
     int i;
     int index = 0;
@@ -195,10 +199,13 @@ void EmployeeActions::updateAccount(string accNo){
         }
     }
 }
+// delete account entry
 void EmployeeActions::closeAccount(string accNo){
     int i;
     int index = 0;
+    // iterate through file
     for (i= 0; i < maxEntries;i++){
+        // delete if acc no found
         if (accountNumber[i] == accNo){
             index++;
 
@@ -219,6 +226,7 @@ void EmployeeActions::closeAccount(string accNo){
     }
 }
 
+// read and display file content
 void EmployeeActions::viewFile(string filePath){
         system("CLS");
         ifstream openFile(filePath);

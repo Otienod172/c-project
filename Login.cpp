@@ -24,29 +24,42 @@ void Login:: validateLogin() {
     int ch;
     string inputRole;
     int inputID;
-    do {
-        cout << " Enter role: ";
-        cin >> inputRole;
-        cout << " Enter ID: ";
-        cin >> inputID;
-        cout << "\n";
+    const string msg = "Login fail. You have keyed in the wrong Role or ID.\nPress 1 to try again or press 2 to exit.";
+    cout << " Enter role: ";
+    cin >> inputRole;
+    cout << " Enter ID: ";
+    cin >> inputID;
+    cout << endl;
+    if (role == inputRole && id == inputID) {
+        cout << " You have successfully login! " << endl;
+        loginSuccess = true;
+    }
+    else {
+        throw(msg);
+    }
+    // do {
+    //     cout << " Enter role: ";
+    //     cin >> inputRole;
+    //     cout << " Enter ID: ";
+    //     cin >> inputID;
+    //     cout << "\n";
 
-        if (role == inputRole && id == inputID) {
-            cout << " You have successfully login! " << endl;
-            loginSuccess = true;
-        }
-        else {
-            cout << " Login fail. You have keyed in the wrong Role or ID. " << endl;
-            cout << " Press 1 to try again or press 2 to exit. " << endl;
-            cin >> ch;
-            switch (ch)
-            {
-            case 1:
-                cout << "Try again!" << endl;
-                continue;
-            case 2:
-                exit(0);
-            }
-        }
-    } while (!loginSuccess);
+    //     if (role == inputRole && id == inputID) {
+    //         cout << " You have successfully login! " << endl;
+    //         loginSuccess = true;
+    //     }
+    //     else {
+    //         cout << " Login fail. You have keyed in the wrong Role or ID. " << endl;
+    //         cout << " Press 1 to try again or press 2 to exit. " << endl;
+    //         cin >> ch;
+    //         switch (ch)
+    //         {
+    //         case 1:
+    //             cout << "Try again!" << endl;
+    //             continue;
+    //         case 2:
+    //             exit(0);
+    //         }
+    //     }
+    // } while (!loginSuccess);
 }

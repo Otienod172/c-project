@@ -14,7 +14,7 @@ int main() {
     ManagerLogin manager("manager", 5678);
     EmployeeDisplay empChoices;
     int choice;
-
+    int retry;
     cout << " 1. Employee Login" << endl;
     cout << " 2. Manager Login" << endl;
     cout << " 3. Exit" << endl;
@@ -22,13 +22,21 @@ int main() {
     cin >> choice;
     switch (choice) {
     case 1:
-        // try {
-        //     employee.validateLogin();
-        // }
-        // catch(msg) {
-            
-        // }
-        employee.validateLogin();
+        try {
+            employee.validateLogin();
+        }
+        catch(const string msg) {
+            cout << msg << endl;
+            cin >> retry;
+            switch (retry) {
+            case 1:
+                cout << "Try again!" << endl;
+                main();
+            case 2:
+                exit(0);
+            }
+        }
+        //employee.validateLogin();
         // system("pause");
         cin.ignore();
         //system("CLS");

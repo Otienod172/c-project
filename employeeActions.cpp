@@ -8,8 +8,11 @@
 using namespace std;
 const int maxEntries = 10;
 
-class employeeActions{
+class EmployeeActions{
     protected:
+        int savingsAccNo = 1000;
+        int fixedDepAccNo = 3000;
+
         string accountNumber[maxEntries] = {};
         string accountType[maxEntries] = {};
         string firstName[maxEntries] = {};
@@ -21,10 +24,15 @@ class employeeActions{
         void writeFile();
         void listAccounts();
         void createAccount();
+        void searchAccount(string);
+        void updateAccount(string);
+        void closeAccount(string);
+        void withdrawMoney(string);
+        void depositMoney(string);
 };
 
 
-void employeeActions::readFile(){
+void EmployeeActions::readFile(){
     string line;
     stringstream getl(line);
     int i = 0;
@@ -34,6 +42,7 @@ void employeeActions::readFile(){
     if(fileToRead.is_open()){
         while(getline(fileToRead,line)){
             getline(getl,accountNumber[i],'/');
+            getline(getl,accountType[i],'/');
             getline(getl, firstName[i],'/');
             getline(getl,lastName[i],'/');
             getline(getl,phoneNumber[i], '/');
@@ -47,7 +56,7 @@ void employeeActions::readFile(){
 
 }
 
-void employeeActions::writeFile(){
+void EmployeeActions::writeFile(){
     int i;
     ofstream fileToWrite;
     fileToWrite.open("./accounts.txt");
@@ -61,7 +70,7 @@ void employeeActions::writeFile(){
     }
 }
 
-void employeeActions::listAccounts(){
+void EmployeeActions::listAccounts(){
     int i,index = 0;
 
     cout << "All accounts" << endl;
@@ -81,30 +90,22 @@ void employeeActions::listAccounts(){
     system("CLS");
 }
 
-void employeeActions::createAccount(){
+void EmployeeActions::createAccount(){
     int i;
     char accId[10];
-    char accType[15];
     char fname[10];
     char lname[10];
     char pn[10];
     char bal[10];
-
+    cin.clear();
     cout << "Account creation" << endl;
     cout << "================\n" << endl;
     cout << " 1. Savings account" << endl;
     cout << " 2. Fixed deposit" << endl;
-    cout << "\n Which type of bank account do you want to create " << endl;
+    cout << "\n Which type of bank account do you want to create " << endl; ;
+    cin.ignore();
+    cout << "Acc Type:";
     cin.getline(accId,10);
-    int accNum = stoi(accId);
-    if (accNum = 1){
-        accType[15] = "Savings";
-
-        //accId ='0' + (rand() % 500 + 1) ; // random number from 1 to 500
-    }else{
-        accNum = 'Fixed deposit';
-        //accId = rand() % 501 + 500 ; // random number from 500 to 1000
-    }
 
     cout << "First name:";
     cin.getline(fname,10);
@@ -120,11 +121,19 @@ void employeeActions::createAccount(){
 
     for (i = 0; i < maxEntries; i++){
         if (accountNumber[i] == "\0"){
-            accountNumber[i] = accId ;
-            accountType[i] = accType;
+            if (accId[0] == '1'){
+                accountType[i] = "Savings";
+                accountNumber[i] = "S"+to_string(savingsAccNo) ;
+                savingsAccNo++;
+            }else{
+                accountType[i] = "Fixed deposit";
+                accountNumber[i] = "F"+to_string(fixedDepAccNo);
+                fixedDepAccNo++;
+            }
             firstName[i] = fname;
             lastName[i] = lname;
             phoneNumber[i] = pn;
+            balance[i] = bal;
             break;
         }
     }
@@ -134,7 +143,7 @@ void employeeActions::createAccount(){
 
 }
 
-void employeeActions::searchAccount(string accNo){
+void EmployeeActions::searchAccount(string accNo){
     int i;
     int index = 0;
     system("CLS");
@@ -159,7 +168,7 @@ void employeeActions::searchAccount(string accNo){
     system("CLS");
 }
 
-void updateAccount(string accNo){
+void EmployeeActions::updateAccount(string accNo){
     int i;
     int index = 0;
     char fname[10];
@@ -185,7 +194,7 @@ void updateAccount(string accNo){
         }
     }
 }
-void deleteAccount(string accNo){
+void EmployeeActions::closeAccount(string accNo){
     int i;
     int index = 0;
     for (i= 0; i < maxEntries;i++){
@@ -193,6 +202,7 @@ void deleteAccount(string accNo){
             index++;
 
             accountNumber[i] = "";
+            accountType[i] = "";
             firstName[i] = "";
             lastName[i] = "";
             phoneNumber[i] = "";

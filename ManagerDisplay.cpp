@@ -1,37 +1,33 @@
-
-#include "EmployeeActions.cpp"
+#include "ManagerActions.cpp"
 
 using namespace std;
 
-class EmployeeDisplay : public EmployeeActions{
+class ManagerDisplay: public ManagerActions, public EmployeeActions{
     public:
         int action;
         string accountNumber;
-        void displayEmployeeActions();
-
-
+        void displayManagerActions();
 };
 
-void EmployeeDisplay::displayEmployeeActions(){
+void ManagerDisplay::displayManagerActions(){
     EmployeeActions empAction;
     empAction.readFile();
     while(1){
-        cout << endl;
-        cout << "P640 Bank Management" << endl;
-        cout << "====================" << endl;
+
+        cout << "P640 Manager Bank Management" << endl;
+        cout << "============================\n" << endl;
         cout << "1. Create Account" << endl;
         cout << "2. Update account details" << endl;
         cout << "3. Close account" << endl;
         cout << "4. Search account detail" << endl;
         cout << "5. List accounts" << endl;
-        cout << "6. Check employee schedule" << endl;
-        cout << "7. Exit" << endl;
-        //cin.ignore();
+        cout << "6. Set employee timetable" << endl;
+        cout << "7. Check employee timetable" << endl;
+        cout << "8. Exit" << endl;
         cin >> action;
         switch(action){
             case 1:
                 system("CLS");
-                cin.ignore();
                 empAction.createAccount();
                 break;
             case 2:
@@ -57,24 +53,28 @@ void EmployeeDisplay::displayEmployeeActions(){
                 empAction.searchAccount(accountNumber);
                 break;
             case 5:
-                //system("CLS");
-                cin.ignore();
+                system("CLS");
+
                 empAction.listAccounts();
                 break;
             case 6:
-                empAction.viewFile("timetable.txt");
+                setEmployeeTimetable();
                 break;
 
             case 7:
+                break;
+
+            case 8:
                 empAction.writeFile();
+                cout << "Exiting..." << endl;
+                system("pause");
+                system("CLS");
                 //main();
                 exit(1);
+                break;
 
 
         }
 
     }
 }
-
-
-

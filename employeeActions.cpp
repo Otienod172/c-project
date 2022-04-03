@@ -11,6 +11,8 @@ using namespace std;
 const int maxEntries = 10;
 
 class EmployeeActions{
+    private:
+        string line;
     protected:
         int savingsAccNo = 1000;
         int fixedDepAccNo = 3000;
@@ -29,14 +31,11 @@ class EmployeeActions{
         void searchAccount(string);
         void updateAccount(string);
         void closeAccount(string);
-        void withdrawMoney(string);
-        void depositMoney(string);
+        void viewFile(string);
 };
 
 
 void EmployeeActions::readFile(){
-    string line;
-    
     int i = 0;
 
     ifstream fileToRead("./accounts.txt");
@@ -90,7 +89,7 @@ void EmployeeActions::listAccounts(){
     // else{
     //     cout << "No account in database" << endl;
     // }
-    
+
 }
 
 void EmployeeActions::createAccount(){
@@ -220,3 +219,21 @@ void EmployeeActions::closeAccount(string accNo){
         cout<<"Account number does'nt exist!";
     }
 }
+
+void EmployeeActions::viewFile(string filePath){
+        system("CLS");
+        ifstream openFile(filePath);
+
+        if (openFile.is_open()){
+
+            while (getline(openFile, line)){
+                cout << line << '\n';
+            }
+            openFile.close();
+        }
+        else{
+            cout << "Failed to open file";
+        }
+        system("pause");
+}
+

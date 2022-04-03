@@ -1,0 +1,38 @@
+Employee's timetable
+====================
+
+Monday Personnel
+________________________________
+Shift 1 - 9AM to 1PM: John
+Shift 2 - 1PM to 6PM: Mayer
+Shift 3 - 6PM to 10PM: Steph
+________________________________
+
+Tuesday Personnel
+________________________________
+Shift 1 - 9AM to 1PM: John
+Shift 2 - 1PM to 6PM: Mayer
+Shift 3 - 6PM to 10PM: Steph
+________________________________
+
+Wednesday Personnel
+________________________________
+Shift 1 - 9AM to 1PM: John
+Shift 2 - 1PM to 6PM: Mayer
+Shift 3 - 6PM to 10PM: Steph
+________________________________
+
+Thursday Personnel
+________________________________
+Shift 1 - 9AM to 1PM: John
+Shift 2 - 1PM to 6PM: Mayer
+Shift 3 - 6PM to 10PM: Steph
+________________________________
+
+Friday Personnel
+________________________________
+Shift 1 - 9AM to 1PM: John
+Shift 2 - 1PM to 6PM: Mayer
+Shift 3 - 6PM to 10PM: Steph
+________________________________
+

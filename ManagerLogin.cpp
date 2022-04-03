@@ -10,18 +10,15 @@ private:
 
 public:
     ManagerLogin(string, int);
-    void ValidateLogin();
+    void validateLogin();
 };
 
 ManagerLogin:: ManagerLogin(string role, int id) : Login(role, id) {
 
 }
 
-void ManagerLogin:: ValidateLogin() {
+void ManagerLogin:: validateLogin() {
     Login:: validateLogin();
     cout << "Welcome, our bank Manager!" << endl;
-    system("pause");
-    system("CLS");
-
-
+   
 }

@@ -14,6 +14,7 @@ int main() {
     ManagerLogin manager("manager", 5678);
     EmployeeDisplay empChoices;
     int choice;
+
     cout << " 1. Employee Login" << endl;
     cout << " 2. Manager Login" << endl;
     cout << " 3. Exit" << endl;
@@ -21,6 +22,12 @@ int main() {
     cin >> choice;
     switch (choice) {
     case 1:
+        // try {
+        //     employee.validateLogin();
+        // }
+        // catch(msg) {
+            
+        // }
         employee.validateLogin();
         // system("pause");
         cin.ignore();

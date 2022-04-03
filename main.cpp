@@ -6,6 +6,8 @@
 #include "ManagerLogin.cpp"
 #include "EmployeeDisplay.cpp"
 #include "EmployeeActions.cpp"
+#include "ManagerDisplay.cpp"
+#include "ManagerActions.cpp"
 
 using namespace std;
 
@@ -13,6 +15,7 @@ int main() {
     EmployeeLogin employee("employee", 1234);
     ManagerLogin manager("manager", 5678);
     EmployeeDisplay empChoices;
+    ManagerDisplay manaChoices;
     int choice;
     int retry;
     cout << " 1. Employee Login" << endl;
@@ -44,10 +47,25 @@ int main() {
         //main();
         break;
     case 2:
-        manager.validateLogin();
+        switch (choice) {
+    case 1:
+        try {
+            employee.validateLogin();
+        }
+        catch(const string msg) {
+            cout << msg << endl;
+            cin >> retry;
+            switch (retry) {
+            case 1:
+                cout << "Try again!" << endl;
+                main();
+            case 2:
+                exit(0);
+            }
+        }
         cin.ignore();
         system("CLS");
-        //managerdisplayscreen.displayManagerMenu();
+        manaChoices.displayManagerActions();
         //main();
         break;
     case 3:

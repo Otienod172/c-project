@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <sstream>
 
+#pragma once
+
 using namespace std;
 const int maxEntries = 10;
 
@@ -34,13 +36,14 @@ class EmployeeActions{
 
 void EmployeeActions::readFile(){
     string line;
-    stringstream getl(line);
+    
     int i = 0;
 
     ifstream fileToRead("./accounts.txt");
 
-    if(fileToRead.is_open()){
+    if (fileToRead.is_open()){
         while(getline(fileToRead,line)){
+            stringstream getl(line);
             getline(getl,accountNumber[i],'/');
             getline(getl,accountType[i],'/');
             getline(getl, firstName[i],'/');
@@ -60,7 +63,7 @@ void EmployeeActions::writeFile(){
     int i;
     ofstream fileToWrite;
     fileToWrite.open("./accounts.txt");
-    for (i = 0; i < maxEntries;i++){
+    for (i = 0; i < maxEntries; i++){
         if (accountNumber[i] == "\0"){
             break;
         }
@@ -71,23 +74,23 @@ void EmployeeActions::writeFile(){
 }
 
 void EmployeeActions::listAccounts(){
-    int i,index = 0;
+    int i, index = 0;
 
     cout << "All accounts" << endl;
     cout << "============" << endl;
     cout<<"No.\t||\tAccount No.\t||\tAccount Type\t||\tFirst name\t||\tLast name\t||\tPhone number\t||\tBalance\t||\n" << endl;
-    if (index != 0){
-        for (i = 0; i < maxEntries; i++){
-            if (accountNumber[i] != "\0"){
-                index++;
-                cout << "\t\t" << index << "\t\t" << accountNumber[i] << "\t\t" << accountType[i] << "\t\t" << firstName[i] << "\t\t" << lastName[i] << "\t\t" << phoneNumber[i] << "\t\t" << balance[i]<< endl;
-            }
+
+    for (i = 0; i < maxEntries; i++) {
+        if (accountNumber[i] != "\0") {
+            index++;
+            cout << "\t" << index << "\t\t" << accountNumber[i] << "\t\t" << accountType[i] << "\t\t" << firstName[i] << "\t\t" << lastName[i] << "\t\t" << phoneNumber[i] << "\t\t" << balance[i]<< endl;
         }
-    }else{
-        cout << "No account in database" << endl;
     }
-    system("pause");
-    system("CLS");
+    cin.ignore();
+    // else{
+    //     cout << "No account in database" << endl;
+    // }
+    
 }
 
 void EmployeeActions::createAccount(){

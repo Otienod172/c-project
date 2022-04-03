@@ -1,5 +1,4 @@
 
-
 #include "EmployeeActions.cpp"
 
 using namespace std;
@@ -17,9 +16,9 @@ void EmployeeDisplay::displayEmployeeActions(){
     EmployeeActions empAction;
     empAction.readFile();
     while(1){
-
+        cout << endl;
         cout << "P640 Bank Management" << endl;
-        cout << "====================\n" << endl;
+        cout << "====================" << endl;
         cout << "1. Create Account" << endl;
         cout << "2. Update account details" << endl;
         cout << "3. Close account" << endl;
@@ -27,10 +26,12 @@ void EmployeeDisplay::displayEmployeeActions(){
         cout << "5. List accounts" << endl;
         cout << "6. Check employee schedule" << endl;
         cout << "7. Exit" << endl;
+        //cin.ignore();
         cin >> action;
         switch(action){
             case 1:
                 system("CLS");
+                cin.ignore();
                 empAction.createAccount();
                 break;
             case 2:
@@ -56,8 +57,8 @@ void EmployeeDisplay::displayEmployeeActions(){
                 empAction.searchAccount(accountNumber);
                 break;
             case 5:
-                system("CLS");
-
+                //system("CLS");
+                cin.ignore();
                 empAction.listAccounts();
                 break;
             case 6:

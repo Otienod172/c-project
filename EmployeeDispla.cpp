@@ -1,15 +1,12 @@
-
 #include "EmployeeActions.cpp"
 
 using namespace std;
 
-class EmployeeDisplay : public EmployeeActions{
+class EmployeeDisplay : public EmployeeActions {
     public:
         int action;
         string accountNumber;
         void displayEmployeeActions();
-
-
 };
 
 void EmployeeDisplay::displayEmployeeActions(){

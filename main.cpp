@@ -4,8 +4,8 @@
 #include "Login.cpp"
 #include "EmployeeLogin.cpp"
 #include "ManagerLogin.cpp"
-#include "employeeDisplay.cpp"
-#include "employeeActions.cpp"
+#include "EmployeeDisplay.cpp"
+#include "EmployeeActions.cpp"
 
 using namespace std;
 

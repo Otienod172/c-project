@@ -47,10 +47,8 @@ int main() {
         //main();
         break;
     case 2:
-
-
             try {
-                employee.validateLogin();
+                manager.validateLogin();
             }
             catch(const string msg) {
                 cout << msg << endl;

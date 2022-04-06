@@ -8,15 +8,13 @@ class EmployeeDisplay : public EmployeeActions{
         int action;
         string accountNumber;
         void displayEmployeeActions();
-
-
 };
 
 void EmployeeDisplay::displayEmployeeActions(){
     EmployeeActions empAction;
     empAction.readFile();
     while(1){
-        system("CLS");
+        //system("CLS");
         cout << "P640 Bank Management" << endl;
         cout << "====================" << endl;
         cout << "1. Create Account" << endl;
@@ -29,9 +27,10 @@ void EmployeeDisplay::displayEmployeeActions(){
         cin >> action;
         switch(action){
             case 1: // account creation
-                system("CLS");
+                //system("CLS");
                 cin.ignore();
                 empAction.createAccount();
+                cout << empAction;
                 break;
             case 2: // account update
                 system("CLS");

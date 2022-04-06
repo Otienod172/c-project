@@ -11,6 +11,7 @@ using namespace std;
 const int maxEntries = 10;
 
 class EmployeeActions{
+    friend ostream& operator<<(ostream&, EmployeeActions);
     private:
         string line;
     protected:
@@ -88,9 +89,21 @@ void EmployeeActions::listAccounts(){
         }
     }
     cin.ignore();
-
 }
 
+ostream& operator<<(ostream& out, EmployeeActions emp) {
+    for (int i = 0; i < maxEntries; i++) {
+        if (emp.accountNumber[i] == "\0") {
+            out << "Your account number is: " << emp.accountNumber[i - 1] << "." << endl;
+            out << "Your account type is " << emp.accountType[i - 1] << "." << endl;
+            out << "Your name is " << emp.firstName[i - 1] << " " << emp.lastName[i - 1] << "." << endl;
+            out << "Your phone number is " << emp.phoneNumber[i - 1] << "." << endl;
+            out << "Your account balance is " << emp.balance[i - 1] << " dollars." << endl;
+            break;
+        }
+    }
+    return out;
+}
 // create new bank account
 void EmployeeActions::createAccount(){
     int i;
@@ -104,28 +117,33 @@ void EmployeeActions::createAccount(){
     cout << "================\n" << endl;
     cout << " 1. Savings account" << endl;
     cout << " 2. Fixed deposit" << endl;
-    cout << "\n Which type of bank account do you want to create " << endl; ;
-    cin.ignore();
-    cout << "Acc Type:";
+    cout << "\n Which type of bank account do you want to create " << endl;
+
+    cout << "Acc Type: ";
     cin.getline(accId,10);
-
-    cout << "First name:";
+    //cin.ignore();
+    
+    cout << "First name: ";
     cin.getline(fname,10);
+    //cin.ignore();
 
-    cout << "Last name:";
+    cout << "Last name: ";
     cin.getline(lname,10);
+    //cin.ignore();
 
-    cout << "Phone Number:";
+    cout << "Phone Number: ";
     cin.getline(pn,10);
+    //cin.ignore();
 
-    cout << "Starting balance:";
+    cout << "Starting balance: ";
     cin.getline(bal,10);
+    //cin.ignore();
 
     for (i = 0; i < maxEntries; i++){
         if (accountNumber[i] == "\0"){
             if (accId[0] == '1'){
                 accountType[i] = "Savings";
-                accountNumber[i] = "S"+to_string(savingsAccNo) ;
+                accountNumber[i] = "S" + to_string(savingsAccNo);
                 savingsAccNo++;
             }else{
                 accountType[i] = "Fixed deposit";
@@ -142,7 +160,6 @@ void EmployeeActions::createAccount(){
     cout << "\nAccount created" <<endl;
     system("pause");
     writeFile();
-
 }
 
 // search for bank account
@@ -233,7 +250,7 @@ void EmployeeActions::closeAccount(string accNo){
 
 // read and display file content
 void EmployeeActions::viewFile(string filePath){
-        system("CLS");
+        //system("CLS");
         ifstream openFile(filePath);
 
         if (openFile.is_open()){

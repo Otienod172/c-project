@@ -27,11 +27,11 @@ void ManagerDisplay::displayManagerActions(){
         cin >> action;
         switch(action){
             case 1:
-                system("CLS");
+                //system("CLS");
                 empAction.createAccount();
                 break;
             case 2:
-                system("CLS");
+                //system("CLS");
                 cin.ignore();
                 cout << "Enter account ID to update: ";
                 getline(cin,accountNumber);
@@ -39,21 +39,21 @@ void ManagerDisplay::displayManagerActions(){
                 empAction.updateAccount(accountNumber);
                 break;
             case 3:
-                system("CLS");
+                //system("CLS");
                 cin.ignore();
                 cout << "Enter account ID to close: ";
                 getline(cin,accountNumber);
                 empAction.closeAccount(accountNumber);
                 break;
             case 4:
-                system("CLS");
+                //system("CLS");
                 cin.ignore();
                 cout << "Enter account ID to search for: ";
                 getline(cin,accountNumber);
                 empAction.searchAccount(accountNumber);
                 break;
             case 5:
-                system("CLS");
+                //system("CLS");
 
                 empAction.listAccounts();
                 break;
@@ -62,13 +62,14 @@ void ManagerDisplay::displayManagerActions(){
                 break;
 
             case 7:
+                empAction.viewFile("timetable.txt");
                 break;
 
             case 8:
                 empAction.writeFile();
                 cout << "Exiting..." << endl;
                 system("pause");
-                system("CLS");
+                //system("CLS");
                 //main();
                 exit(1);
                 break;

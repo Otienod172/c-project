@@ -149,7 +149,7 @@ void EmployeeActions::createAccount(){
 void EmployeeActions::searchAccount(string accNo){
     int i;
     int index = 0;
-    system("CLS");
+    //system("CLS");
     cout << "Current Booking" << endl;
     cout << "=================" << endl;
     cout<<"||\tNo.\t||\tAccount No.\t||\tAccount Type\t||\tFirst name\t||\tLast name\t||\tPhone number\t||\tBalance\t\t||\n" << endl;
@@ -169,7 +169,7 @@ void EmployeeActions::searchAccount(string accNo){
     }
     system("pause");
     writeFile();
-    system("CLS");
+    //system("CLS");
 }
 
 // update bank account details
@@ -197,6 +197,11 @@ void EmployeeActions::updateAccount(string accNo){
             cout <<"Account updated" << endl;
             break;
         }
+        else{
+            cout <<"No account found! Please Try again!" << endl;
+            break;
+        }
+
     }
 }
 // delete account entry

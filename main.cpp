@@ -18,6 +18,7 @@ int main() {
     ManagerDisplay manaChoices;
     int choice;
     int retry;
+    
     cout << " 1. Employee Login" << endl;
     cout << " 2. Manager Login" << endl;
     cout << " 3. Exit" << endl;

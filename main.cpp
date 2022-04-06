@@ -62,7 +62,7 @@ int main() {
                 }
             }
             cin.ignore();
-            //system("CLS");
+            system("CLS");
             manaChoices.displayManagerActions();
             //main();
             break;

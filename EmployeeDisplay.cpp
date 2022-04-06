@@ -30,7 +30,7 @@ void EmployeeDisplay::displayEmployeeActions(){
         switch(action){
 
             case 1: // account creation
-                //system("CLS");
+                system("CLS");
                 cin.ignore();
                 empAction.createAccount();
                 break;

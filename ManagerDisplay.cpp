@@ -53,7 +53,7 @@ void ManagerDisplay::displayManagerActions(){
                 empAction.searchAccount(accountNumber);
                 break;
             case 5:
-                //system("CLS");
+                system("CLS");
 
                 empAction.listAccounts();
                 break;
@@ -62,7 +62,6 @@ void ManagerDisplay::displayManagerActions(){
                 break;
 
             case 7:
-                empAction.viewFile("timetable.txt");
                 break;
 
             case 8:

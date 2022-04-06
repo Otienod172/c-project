@@ -108,8 +108,8 @@ ostream& operator<<(ostream& out, EmployeeActions emp) {
 void EmployeeActions::createAccount(){
     int i;
     char accId[10];
-    char fname[10];
-    char lname[10];
+    char fname[50];
+    char lname[50];
     char pn[10];
     char bal[10];
     cin.clear();
@@ -124,11 +124,11 @@ void EmployeeActions::createAccount(){
     //cin.ignore();
     
     cout << "First name: ";
-    cin.getline(fname,10);
+    cin.getline(fname,50);
     //cin.ignore();
 
     cout << "Last name: ";
-    cin.getline(lname,10);
+    cin.getline(lname,50);
     //cin.ignore();
 
     cout << "Phone Number: ";
@@ -193,17 +193,17 @@ void EmployeeActions::searchAccount(string accNo){
 void EmployeeActions::updateAccount(string accNo){
     int i;
     int index = 0;
-    char fname[10];
-    char lname[10];
+    char fname[50];
+    char lname[50];
     char pn[10];
 
     for(i = 0; i < maxEntries; i++){
         if (accountNumber[i]== accNo){
             index++;
             cout << "First Name:";
-            cin.getline(fname,10);
+            cin.getline(fname,50);
             cout << "Last Name:";
-            cin.getline(lname,10);
+            cin.getline(lname,50);
             cout << "Contact:";
             cin.getline(pn,10);
 
@@ -244,7 +244,7 @@ void EmployeeActions::closeAccount(string accNo){
     }
     //not found in file
     if (index = 0){
-        cout<<"Account number does'nt exist!";
+        cout<<"Account number doesn't exist!";
     }
 }
 

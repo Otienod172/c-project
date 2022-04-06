@@ -66,5 +66,5 @@ void ManagerActions::setEmployeeTimetable(){
 
         timetable.close();
         system("pause");
-        system("CLS");
+        //system("CLS");
 }

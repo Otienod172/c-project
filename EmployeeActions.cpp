@@ -169,7 +169,7 @@ void EmployeeActions::searchAccount(string accNo){
     }
     system("pause");
     writeFile();
-    system("CLS");
+    //system("CLS");
 }
 
 // update bank account details
@@ -197,6 +197,10 @@ void EmployeeActions::updateAccount(string accNo){
             cout <<"Account updated" << endl;
             break;
         }
+        else{
+            cout<<"No account matching found! Please Try again!"<<endl;
+            break;
+        }
     }
 }
 // delete account entry
@@ -219,11 +223,13 @@ void EmployeeActions::closeAccount(string accNo){
             cout<<"Account deleted" << endl;
             break;
         }
+        else{ //not found in file
+            cout<<"Account number doesn't exist!"<<endl;
+            break;
+        }
     }
-    //not found in file
-    if (index = 0){
-        cout<<"Account number does'nt exist!";
-    }
+
+
 }
 
 // read and display file content

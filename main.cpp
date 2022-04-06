@@ -18,7 +18,6 @@ int main() {
     ManagerDisplay manaChoices;
     int choice;
     int retry;
-    
     cout << " 1. Employee Login" << endl;
     cout << " 2. Manager Login" << endl;
     cout << " 3. Exit" << endl;
@@ -28,6 +27,10 @@ int main() {
     case 1:
         try {
             employee.validateLogin();
+            cin.ignore();
+            //system("CLS");
+            displayUserInfo(employee);
+            empChoices.displayEmployeeActions(); // call the employee display
         }
         catch(const string msg) {
             cout << msg << endl;
@@ -40,16 +43,15 @@ int main() {
                 exit(0);
             }
         }
-        //employee.validateLogin();
-        // system("pause");
-        cin.ignore();
-        //system("CLS");
-        empChoices.displayEmployeeActions(); // call the employee display
-        //main();
+        
         break;
     case 2:
             try {
                 manager.validateLogin();
+                cin.ignore();
+                //system("CLS");
+                displayUserInfo(manager);
+                manaChoices.displayManagerActions();
             }
             catch(const string msg) {
                 cout << msg << endl;
@@ -62,10 +64,6 @@ int main() {
                     exit(0);
                 }
             }
-            cin.ignore();
-            system("CLS");
-            manaChoices.displayManagerActions();
-            //main();
             break;
 
       case 3:

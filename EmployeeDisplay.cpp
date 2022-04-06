@@ -28,7 +28,6 @@ void EmployeeDisplay::displayEmployeeActions(){
         cout << "7. Exit" << endl;
         cin >> action;
         switch(action){
-
             case 1: // account creation
                 system("CLS");
                 cin.ignore();

@@ -8,7 +8,7 @@ using namespace std;
 
 class ManagerActions{
     private:
-        string empName,line;
+        string empName, line;
     public:
         void setEmployeeTimetable();
 };
@@ -60,11 +60,8 @@ void ManagerActions::setEmployeeTimetable(){
                 timetable << shifts[j] << ": " << employee[j] << endl;
             }
             timetable << "________________________________\n" << endl;
-
         }
-
-
-        timetable.close();
-        system("pause");
-        system("CLS");
+    timetable.close();
+    system("pause");
+    system("CLS");
 }

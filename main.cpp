@@ -1,13 +1,13 @@
-#include<string>
-#include<iostream>
+#include <string>
+#include <iostream>
 
-#include "Login.cpp"
-#include "EmployeeLogin.cpp"
-#include "ManagerLogin.cpp"
-#include "EmployeeDisplay.cpp"
-#include "EmployeeActions.cpp"
-#include "ManagerDisplay.cpp"
-#include "ManagerActions.cpp"
+#include "Login.h"
+#include "EmployeeLogin.h"
+#include "ManagerLogin.h"
+#include "EmployeeDisplay.h"
+#include "EmployeeActions.h"
+#include "ManagerDisplay.h"
+#include "ManagerActions.h"
 
 using namespace std;
 
@@ -18,10 +18,11 @@ int main() {
     ManagerDisplay manaChoices;
     int choice;
     int retry;
+
     cout << " 1. Employee Login" << endl;
     cout << " 2. Manager Login" << endl;
     cout << " 3. Exit" << endl;
-    //cin.ignore();
+
     cin >> choice;
     switch (choice) {
     case 1:
@@ -32,7 +33,7 @@ int main() {
             displayUserInfo(employee);
             empChoices.displayEmployeeActions(); // call the employee display
         }
-        catch(const string msg) {
+        catch (const string msg) {
             cout << msg << endl;
             cin >> retry;
             switch (retry) {
@@ -43,32 +44,29 @@ int main() {
                 exit(0);
             }
         }
-        
         break;
     case 2:
-            try {
-                manager.validateLogin();
-                cin.ignore();
-                //system("CLS");
-                displayUserInfo(manager);
-                manaChoices.displayManagerActions();
+        try {
+            manager.validateLogin();
+            cin.ignore();
+            //system("CLS");
+            displayUserInfo(manager);
+            manaChoices.displayManagerActions();
+        }
+        catch (const string msg) {
+            cout << msg << endl;
+            cin >> retry;
+            switch (retry) {
+            case 1:
+                cout << "Try again!" << endl;
+                main();
+            case 2:
+                exit(0);
             }
-            catch(const string msg) {
-                cout << msg << endl;
-                cin >> retry;
-                switch (retry) {
-                case 1:
-                    cout << "Try again!" << endl;
-                    main();
-                case 2:
-                    exit(0);
-                }
-            }
-            break;
-
-      case 3:
-            exit(0);
-            }
+        }
+        break;
+    case 3:
+        exit(0);
+    }
     return 0;
 }
-

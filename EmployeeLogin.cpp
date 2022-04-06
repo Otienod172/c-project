@@ -1,23 +1,15 @@
-#include<string>
-#include<iostream>
+#ifndef EMPLOYEELOGIN_CPP
+#define EMPLOYEELOGIN_CPP
 
-#include "Login.cpp"
+#include "EmployeeLogin.h"
 
-using namespace std;
-
-class EmployeeLogin: public Login {
-private:
-
-public:
-    EmployeeLogin(string, int);
-    void validateLogin();
-};
-
-EmployeeLogin::EmployeeLogin(string role, int id) : Login(role, id) {
+EmployeeLogin:: EmployeeLogin(string role, int id): Login(role, id) {
 
 }
 
-void EmployeeLogin::validateLogin() {
-    Login::validateLogin();
+void EmployeeLogin:: validateLogin() {
+    Login:: validateLogin();
     cout << "Welcome, our bank Employee!" << endl;
 }
+
+#endif

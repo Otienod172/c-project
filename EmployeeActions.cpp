@@ -1,96 +1,65 @@
-#include <iostream>
-#include <string>
-#include <cstring>
-#include<fstream>
-#include <stdlib.h>
-#include <sstream>
-#include <iomanip>
-#pragma once
+#ifndef EMPLOYEEACTIONS_CPP
+#define EMPLOYEEACTIONS_CPP
 
-using namespace std;
-const int maxEntries = 10;
-
-class EmployeeActions{
-    friend ostream& operator<<(ostream&, EmployeeActions);
-    private:
-        string line;
-    protected:
-        int savingsAccNo = 1000;
-        int fixedDepAccNo = 3000;
-
-        string accountNumber[maxEntries] = {};
-        string accountType[maxEntries] = {};
-        string firstName[maxEntries] = {};
-        string lastName[maxEntries] = {};
-        string phoneNumber[maxEntries] = {};
-        string balance[maxEntries] = {};
-    public:
-        void readFile();
-        void writeFile();
-        void listAccounts();
-        void createAccount();
-        void searchAccount(string);
-        void updateAccount(string);
-        void closeAccount(string);
-        void viewFile(string);
-};
+#include "EmployeeActions.h"
 
 // read file containing bank account details
-void EmployeeActions::readFile(){
+void EmployeeActions:: readFile() {
     int i = 0;
-
     ifstream fileToRead("./accounts.txt");
 
-    if (fileToRead.is_open()){
-        while(getline(fileToRead,line)){
+    if (fileToRead.is_open()) {
+        while (getline(fileToRead, line)) {
             stringstream getl(line);
-            getline(getl,accountNumber[i],'/');
-            getline(getl,accountType[i],'/');
-            getline(getl, firstName[i],'/');
-            getline(getl,lastName[i],'/');
-            getline(getl,phoneNumber[i], '/');
-            getline(getl,balance[i], '/');
+            getline(getl, accountNumber[i], '/');
+            getline(getl, accountType[i], '/');
+            getline(getl, firstName[i], '/');
+            getline(getl, lastName[i], '/');
+            getline(getl, phoneNumber[i], '/');
+            getline(getl, balance[i], '/');
             i++;
         }
     }
     else{
         cout << "error opening accounts.txt" << endl;
     }
-
 }
+
 // write bank account details into file
-void EmployeeActions::writeFile(){
+void EmployeeActions:: writeFile() {
     int i;
     ofstream fileToWrite;
     fileToWrite.open("./accounts.txt");
-    for (i = 0; i < maxEntries; i++){
-        if (accountNumber[i] == "\0"){
+    
+    for (i = 0; i < maxEntries; i++) {
+        if (accountNumber[i] == "\0") {
             break;
         }
-        else{
+        else {
             fileToWrite << accountNumber[i] + "/" + accountType[i] + "/" + firstName[i] + "/" + lastName[i] + "/" + phoneNumber[i] + "/" + balance[i] << endl;
         }
     }
 }
 
 // list all bank accounts
-void EmployeeActions::listAccounts(){
-    int i, index = 0;
+void EmployeeActions:: listAccounts() {
+    int i;
+    int index = 0;
 
     cout << "All accounts" << endl;
     cout << "============" << endl;
-    cout<<"No.\t||\tAccount No.\t||\tAccount Type\t||\tFirst name\t||\tLast name\t||\tPhone number\t||\tBalance\t\t||\n" << endl;
+    cout << "No.\t||\tAccount No.\t||\tAccount Type\t||\tFirst name\t||\tLast name\t||\tPhone number\t||\tBalance\t\t||\n" << endl;
 
     for (i = 0; i < maxEntries; i++) {
         if (accountNumber[i] != "\0") {
             index++;
-            cout << index << setw(20)  << accountNumber[i] << setw(30) << accountType[i]  <<
-            setw(20)  << firstName[i] << setw(25)  << lastName[i]  << setw(25)  << phoneNumber[i] << setw(20)  << balance[i] << endl;
+            cout << index << setw(20)  << accountNumber[i] << setw(30) << accountType[i] << setw(20) << firstName[i] << setw(25) << lastName[i] << setw(25) << phoneNumber[i] << setw(20) << balance[i] << endl;
         }
     }
     cin.ignore();
 }
 
+//display created account details
 ostream& operator<<(ostream& out, EmployeeActions emp) {
     for (int i = 0; i < maxEntries; i++) {
         if (emp.accountNumber[i] == "\0") {
@@ -104,12 +73,13 @@ ostream& operator<<(ostream& out, EmployeeActions emp) {
     }
     return out;
 }
+
 // create new bank account
-void EmployeeActions::createAccount(){
+void EmployeeActions:: createAccount() {
     int i;
     char accId[10];
-    char fname[50];
-    char lname[50];
+    char fname[10];
+    char lname[10];
     char pn[10];
     char bal[10];
     cin.clear();
@@ -120,34 +90,30 @@ void EmployeeActions::createAccount(){
     cout << "\n Which type of bank account do you want to create " << endl;
 
     cout << "Acc Type: ";
-    cin.getline(accId,10);
-    //cin.ignore();
+    cin.getline(accId, 10);
     
     cout << "First name: ";
-    cin.getline(fname,50);
-    //cin.ignore();
+    cin.getline(fname, 10);
 
     cout << "Last name: ";
-    cin.getline(lname,50);
-    //cin.ignore();
+    cin.getline(lname, 10);
 
     cout << "Phone Number: ";
-    cin.getline(pn,10);
-    //cin.ignore();
+    cin.getline(pn, 10);
 
     cout << "Starting balance: ";
-    cin.getline(bal,10);
-    //cin.ignore();
+    cin.getline(bal, 10);
 
-    for (i = 0; i < maxEntries; i++){
-        if (accountNumber[i] == "\0"){
-            if (accId[0] == '1'){
+    for (i = 0; i < maxEntries; i++) {
+        if (accountNumber[i] == "\0") {
+            if (accId[0] == '1') {
                 accountType[i] = "Savings";
                 accountNumber[i] = "S" + to_string(savingsAccNo);
                 savingsAccNo++;
-            }else{
+            } 
+            else {
                 accountType[i] = "Fixed deposit";
-                accountNumber[i] = "F"+to_string(fixedDepAccNo);
+                accountNumber[i] = "F" + to_string(fixedDepAccNo);
                 fixedDepAccNo++;
             }
             firstName[i] = fname;
@@ -163,25 +129,24 @@ void EmployeeActions::createAccount(){
 }
 
 // search for bank account
-void EmployeeActions::searchAccount(string accNo){
+void EmployeeActions:: searchAccount(string accNo) {
     int i;
     int index = 0;
     //system("CLS");
     cout << "Current Booking" << endl;
     cout << "=================" << endl;
-    cout<<"||\tNo.\t||\tAccount No.\t||\tAccount Type\t||\tFirst name\t||\tLast name\t||\tPhone number\t||\tBalance\t\t||\n" << endl;
+    cout << "||\tNo.\t||\tAccount No.\t||\tAccount Type\t||\tFirst name\t||\tLast name\t||\tPhone number\t||\tBalance\t\t||\n" << endl;
 
     // interate through file and find acc no that matches
-    for (i = 0; i<maxEntries;i++){
-        if (accountNumber[i] == accNo){
+    for (i = 0; i < maxEntries; i++) {
+        if (accountNumber[i] == accNo) {
             index++;
-            cout << index << setw(20)  << accountNumber[i] << setw(30) << accountType[i]  <<
-            setw(20)  << firstName[i] << setw(25)  << lastName[i]  << setw(25)  << phoneNumber[i] << setw(20)  << balance[i] << endl;
+            cout << index << setw(20) << accountNumber[i] << setw(30) << accountType[i] << setw(20) << firstName[i] << setw(25) << lastName[i] << setw(25) << phoneNumber[i] << setw(20) << balance[i] << endl;
             break;
         }
     }
     // acc dosent exist in database
-    if (index == 0 ){
+    if (index == 0 ) {
         cout << "No account in database" << endl;
     }
     system("pause");
@@ -190,47 +155,46 @@ void EmployeeActions::searchAccount(string accNo){
 }
 
 // update bank account details
-void EmployeeActions::updateAccount(string accNo){
+void EmployeeActions:: updateAccount(string accNo) {
     int i;
     int index = 0;
-    char fname[50];
-    char lname[50];
+    char fname[10];
+    char lname[10];
     char pn[10];
 
-    for(i = 0; i < maxEntries; i++){
-        if (accountNumber[i]== accNo){
+    for(i = 0; i < maxEntries; i++) {
+        if (accountNumber[i]== accNo) {
             index++;
             cout << "First Name:";
-            cin.getline(fname,50);
+            cin.getline(fname, 10);
             cout << "Last Name:";
-            cin.getline(lname,50);
+            cin.getline(lname, 10);
             cout << "Contact:";
-            cin.getline(pn,10);
+            cin.getline(pn, 10);
 
             firstName[i] = fname;
             lastName[i] = lname;
             phoneNumber[i] = pn;
 
-            cout <<"Account updated" << endl;
+            cout << "Account updated" << endl;
             break;
         }
-        else{
-            cout <<"No account found! Please Try again!" << endl;
+        else {
+            cout << "No account found! Please Try again!" << endl;
             break;
         }
-
     }
 }
+
 // delete account entry
-void EmployeeActions::closeAccount(string accNo){
+void EmployeeActions:: closeAccount(string accNo) {
     int i;
     int index = 0;
     // iterate through file
-    for (i= 0; i < maxEntries;i++){
+    for (i = 0; i < maxEntries; i++) {
         // delete if acc no found
-        if (accountNumber[i] == accNo){
+        if (accountNumber[i] == accNo) {
             index++;
-
             accountNumber[i] = "";
             accountType[i] = "";
             firstName[i] = "";
@@ -238,31 +202,31 @@ void EmployeeActions::closeAccount(string accNo){
             phoneNumber[i] = "";
             balance[i] = "";
 
-            cout<<"Account deleted" << endl;
+            cout << "Account deleted" << endl;
             break;
         }
     }
     //not found in file
-    if (index = 0){
-        cout<<"Account number doesn't exist!";
+    if (index == 0) {
+        cout << "Account number doesn't exist!" << endl;
     }
 }
 
 // read and display file content
-void EmployeeActions::viewFile(string filePath){
-        //system("CLS");
-        ifstream openFile(filePath);
+void EmployeeActions:: viewFile(string filePath) {
+    //system("CLS");
+    ifstream openFile(filePath);
 
-        if (openFile.is_open()){
-
-            while (getline(openFile, line)){
-                cout << line << '\n';
-            }
-            openFile.close();
+    if (openFile.is_open()) {
+        while (getline(openFile, line)) {
+            cout << line << '\n';
         }
-        else{
-            cout << "Failed to open file";
-        }
-        system("pause");
+        openFile.close();
+    }
+    else {
+        cout << "Failed to open file" << endl;
+    }
+    system("pause");
 }
 
+#endif

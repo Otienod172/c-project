@@ -1,31 +1,11 @@
-#include<string>
-#include<iostream>
-#pragma once
+#ifndef LOGIN_CPP
+#define LOGIN_CPP
 
-using namespace std;
+#include "Login.h"
 
-class Login {
-template <class T>
-friend void displayUserInfo(T user);
-private:
-    string role;
-    int id;
-    bool loginSuccess = false;
-
-public:
-    Login(string, int);
-    void validateLogin();
-};
-
-Login::Login(string role, int id) {
+Login:: Login(string role, int id) {
     this-> role = role;
     this-> id = id;
-}
-
-template <class T>
-void displayUserInfo(T user) {
-    cout << "User Role: " << user.role << endl;
-    cout << "User ID: " << user.id << endl;
 }
 
 void Login:: validateLogin() {
@@ -46,3 +26,5 @@ void Login:: validateLogin() {
         throw(msg);
     }
 }
+
+#endif

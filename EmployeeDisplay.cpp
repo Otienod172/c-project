@@ -24,8 +24,8 @@ void EmployeeDisplay:: displayEmployeeActions() {
         case 1: // account creation
             system("CLS");
             empAction.createAccount();
-            system("CLS");
             cout << empAction;
+            system("Pause");
             break;
         case 2: // account update
             system("CLS");

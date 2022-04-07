@@ -25,8 +25,8 @@ void ManagerDisplay:: displayManagerActions() {
         case 1:
             system("CLS");
             empAction.createAccount();
-            system("CLS");
             cout << empAction;
+            system("Pause");
             break;
         case 2:
             system("CLS");

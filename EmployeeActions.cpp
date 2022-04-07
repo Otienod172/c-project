@@ -128,7 +128,6 @@ void EmployeeActions:: createAccount() {
         }
     }
     cout << "\nAccount created successfully!" <<endl;
-    system("pause");
     writeFile();
 }
 

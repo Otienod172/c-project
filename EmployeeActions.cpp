@@ -107,17 +107,18 @@ void EmployeeActions:: createAccount() {
 
     cout << "Starting balance: ";
     cin.getline(bal, 10);
-
+    int index=0;
     for (i = 0; i < maxEntries; i++) {
         if (accountNumber[i] == "\0") {
+            index++;
             if (accId[0] == '1') {
                 accountType[i] = "Savings";
-                accountNumber[i] = "S" + to_string(savingsAccNo);
+                accountNumber[i] = "S" + to_string(savingsAccNo+index);
                 savingsAccNo++;
             } 
             else {
                 accountType[i] = "Fixed deposit";
-                accountNumber[i] = "F" + to_string(fixedDepAccNo);
+                accountNumber[i] = "F" + to_string(fixedDepAccNo+index);
                 fixedDepAccNo++;
             }
             firstName[i] = fname;

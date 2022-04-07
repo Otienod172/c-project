@@ -7,12 +7,13 @@ void ManagerActions:: setEmployeeTimetable() {
     vector <string> weekday, shifts;
     vector <string> employee;
     int i, j;
+    int k = 0;
     ofstream timetable;
 
     cout << "Set Employee's timetable" << endl;
     cout << "========================\n" << endl;
 
-    timetable.open("timetable.txt", ios::in|ios::out|ios::trunc);
+    timetable.open("timetable.txt", ios::in| ios::out| ios::trunc);
 
     shifts.push_back("Shift 1 - 9AM to 1PM");
     shifts.push_back("Shift 2 - 1PM to 6PM");
@@ -41,7 +42,8 @@ void ManagerActions:: setEmployeeTimetable() {
 
         //Insert name for the 3 shifts
         for (j = 0; j < 3; j++) {
-            timetable << shifts[j] << ": " << employee[j] << endl;
+            timetable << shifts[j] << ": " << employee[k] << endl;
+            k++;
         }
         timetable << "________________________________\n" << endl;
     }

@@ -7,8 +7,8 @@ void EmployeeDisplay:: displayEmployeeActions() {
     EmployeeActions empAction;
     empAction.readFile();
 
-    while(1) {
-        //system("CLS");
+    while (1) {
+        cout << "====================" << endl;
         cout << "P640 Bank Management" << endl;
         cout << "====================" << endl;
         cout << "1. Create Account" << endl;
@@ -22,9 +22,9 @@ void EmployeeDisplay:: displayEmployeeActions() {
         cin >> action;
         switch (action) {
         case 1: // account creation
-            //system("CLS");
-            cin.ignore();
+            system("CLS");
             empAction.createAccount();
+            system("CLS");
             cout << empAction;
             break;
         case 2: // account update
@@ -49,7 +49,7 @@ void EmployeeDisplay:: displayEmployeeActions() {
             empAction.searchAccount(accountNumber);
             break;
         case 5: // list all accounts
-            //system("CLS");
+            system("CLS");
             cin.ignore();
             empAction.listAccounts();
             break;
@@ -58,7 +58,6 @@ void EmployeeDisplay:: displayEmployeeActions() {
             break;
         case 7: // exit
             empAction.writeFile();
-            //main();
             exit(1);
         }
     }

@@ -29,7 +29,7 @@ int main() {
         try {
             employee.validateLogin();
             cin.ignore();
-            //system("CLS");
+            system("CLS");
             displayUserInfo(employee);
             empChoices.displayEmployeeActions(); // call the employee display
         }
@@ -39,6 +39,8 @@ int main() {
             switch (retry) {
             case 1:
                 cout << "Try again!" << endl;
+                system("pause");
+                system("CLS");
                 main();
             case 2:
                 exit(0);
@@ -49,7 +51,7 @@ int main() {
         try {
             manager.validateLogin();
             cin.ignore();
-            //system("CLS");
+            system("CLS");
             displayUserInfo(manager);
             manaChoices.displayManagerActions();
         }
@@ -59,6 +61,8 @@ int main() {
             switch (retry) {
             case 1:
                 cout << "Try again!" << endl;
+                system("pause");
+                system("CLS");
                 main();
             case 2:
                 exit(0);

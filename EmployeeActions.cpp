@@ -53,10 +53,13 @@ void EmployeeActions:: listAccounts() {
     for (i = 0; i < maxEntries; i++) {
         if (accountNumber[i] != "\0") {
             index++;
-            cout << index << setw(20)  << accountNumber[i] << setw(30) << accountType[i] << setw(20) << firstName[i] << setw(25) << lastName[i] << setw(25) << phoneNumber[i] << setw(20) << balance[i] << endl;
+            cout << index << setw(20) << accountNumber[i] << setw(30) << accountType[i] << setw(20) << firstName[i] << setw(25) << lastName[i] << setw(25) << phoneNumber[i] << setw(20) << balance[i] << endl;
         }
     }
-    cin.ignore();
+    //if there is no account created at all
+    if (index == 0) {
+        cout << "No account in database" << endl;
+    }
 }
 
 //display created account details
@@ -89,12 +92,13 @@ void EmployeeActions:: createAccount() {
     cout << " 2. Fixed deposit" << endl;
     cout << "\n Which type of bank account do you want to create " << endl;
 
+    cin.ignore();
     cout << "Acc Type: ";
     cin.getline(accId, 10);
     
     cout << "First name: ";
     cin.getline(fname, 10);
-
+    
     cout << "Last name: ";
     cin.getline(lname, 10);
 
@@ -123,7 +127,7 @@ void EmployeeActions:: createAccount() {
             break;
         }
     }
-    cout << "\nAccount created" <<endl;
+    cout << "\nAccount created successfully!" <<endl;
     system("pause");
     writeFile();
 }
@@ -146,7 +150,7 @@ void EmployeeActions:: searchAccount(string accNo) {
         }
     }
     // acc dosent exist in database
-    if (index == 0 ) {
+    if (index == 0) {
         cout << "No account in database" << endl;
     }
     system("pause");
@@ -157,14 +161,14 @@ void EmployeeActions:: searchAccount(string accNo) {
 // update bank account details
 void EmployeeActions:: updateAccount(string accNo) {
     int i;
-    int index = 0;
+    bool accountExist = false;
     char fname[10];
     char lname[10];
     char pn[10];
 
     for(i = 0; i < maxEntries; i++) {
-        if (accountNumber[i]== accNo) {
-            index++;
+        if (accountNumber[i] == accNo) {
+            accountExist = true;
             cout << "First Name:";
             cin.getline(fname, 10);
             cout << "Last Name:";
@@ -179,22 +183,22 @@ void EmployeeActions:: updateAccount(string accNo) {
             cout << "Account updated" << endl;
             break;
         }
-        else {
-            cout << "No account found! Please Try again!" << endl;
-            break;
-        }
+    }
+    //no account with the same account number found
+    if (accountExist == false) {
+        cout << "No account found! Please Try again!" << endl;
     }
 }
 
 // delete account entry
 void EmployeeActions:: closeAccount(string accNo) {
     int i;
-    int index = 0;
+    bool accountExist = false;
     // iterate through file
     for (i = 0; i < maxEntries; i++) {
-        // delete if acc no found
+        // delete if acc found
         if (accountNumber[i] == accNo) {
-            index++;
+            accountExist = true;
             accountNumber[i] = "";
             accountType[i] = "";
             firstName[i] = "";
@@ -207,7 +211,7 @@ void EmployeeActions:: closeAccount(string accNo) {
         }
     }
     //not found in file
-    if (index == 0) {
+    if (accountExist == false) {
         cout << "Account number doesn't exist!" << endl;
     }
 }

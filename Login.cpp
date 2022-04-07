@@ -23,6 +23,7 @@ void Login:: validateLogin() {
         loginSuccess = true;
     }
     else {
+        system("CLS");
         throw(msg);
     }
 }

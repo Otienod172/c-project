@@ -8,6 +8,7 @@ void ManagerDisplay:: displayManagerActions() {
     empAction.readFile();
 
     while (1) {
+        cout << "============================" << endl;
         cout << "P640 Manager Bank Management" << endl;
         cout << "============================\n" << endl;
         cout << "1. Create Account" << endl;
@@ -22,32 +23,34 @@ void ManagerDisplay:: displayManagerActions() {
         cin >> action;
         switch (action) {
         case 1:
-            //system("CLS");
+            system("CLS");
             empAction.createAccount();
+            system("CLS");
+            cout << empAction;
             break;
         case 2:
-            //system("CLS");
+            system("CLS");
             cin.ignore();
             cout << "Enter account ID to update: ";
             getline(cin, accountNumber);
             empAction.updateAccount(accountNumber);
             break;
         case 3:
-            //system("CLS");
+            system("CLS");
             cin.ignore();
             cout << "Enter account ID to close: ";
             getline(cin, accountNumber);
             empAction.closeAccount(accountNumber);
             break;
         case 4:
-            //system("CLS");
+            system("CLS");
             cin.ignore();
             cout << "Enter account ID to search for: ";
             getline(cin, accountNumber);
             empAction.searchAccount(accountNumber);
             break;
         case 5:
-            //system("CLS");
+            system("CLS");
             empAction.listAccounts();
             break;
         case 6:
@@ -60,7 +63,6 @@ void ManagerDisplay:: displayManagerActions() {
             empAction.writeFile();
             cout << "Exiting..." << endl;
             system("pause");
-            //system("CLS");
             exit(1);
             break;
         }

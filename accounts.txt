@@ -1,5 +1,7 @@
 123456/savings/blake/griffin/9123872/1000
 998126/fixed deposit/cole/anthony/9123322/4000
 323445/savings/giannis/antetokounmpo/87563433/500
-S1000/Savings/Toh/Xue Wang/999999/1000
-S1000/Savings/Toh/Xue Wang/12345678/1000
+F3000/Fixed deposit/Fix/Please/1234/1000
+S1000/Savings/asd/dsa/11/111
+F3000/Fixed deposit/god/please/123/321
+S1000/Savings/should/work/123/321

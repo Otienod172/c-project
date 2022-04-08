@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class EmployeeDisplay: public EmployeeActions{
+class EmployeeDisplay: public EmployeeActions {
 public:
     int action;
     string accountNumber;

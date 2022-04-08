@@ -20,7 +20,7 @@ void EmployeeActions:: readFile() {
             i++;
         }
     }
-    else{
+    else {
         cout << "error opening accounts.txt" << endl;
     }
 }
@@ -45,7 +45,7 @@ void EmployeeActions:: writeFile() {
 void EmployeeActions:: listAccounts() {
     int i;
     int index = 0;
-
+    system("CLS");
     cout << "All accounts" << endl;
     cout << "============" << endl;
     cout << "No.\t||\tAccount No.\t||\tAccount Type\t||\tFirst name\t||\tLast name\t||\tPhone number\t||\tBalance\t\t||\n" << endl;
@@ -85,7 +85,7 @@ void EmployeeActions:: createAccount() {
     char lname[10];
     char pn[10];
     char bal[10];
-    cin.clear();
+    system("CLS");
     cout << "Account creation" << endl;
     cout << "================\n" << endl;
     cout << " 1. Savings account" << endl;
@@ -107,18 +107,16 @@ void EmployeeActions:: createAccount() {
 
     cout << "Starting balance: ";
     cin.getline(bal, 10);
-    int index=0;
     for (i = 0; i < maxEntries; i++) {
         if (accountNumber[i] == "\0") {
-            index++;
             if (accId[0] == '1') {
                 accountType[i] = "Savings";
-                accountNumber[i] = "S" + to_string(savingsAccNo+index);
+                accountNumber[i] = "S" + to_string(savingsAccNo);
                 savingsAccNo++;
             } 
             else {
                 accountType[i] = "Fixed deposit";
-                accountNumber[i] = "F" + to_string(fixedDepAccNo+index);
+                accountNumber[i] = "F" + to_string(fixedDepAccNo);
                 fixedDepAccNo++;
             }
             firstName[i] = fname;
@@ -128,7 +126,7 @@ void EmployeeActions:: createAccount() {
             break;
         }
     }
-    cout << "\nAccount created successfully!" <<endl;
+    cout << "\nAccount created successfully!" << endl;
     writeFile();
 }
 
@@ -136,7 +134,7 @@ void EmployeeActions:: createAccount() {
 void EmployeeActions:: searchAccount(string accNo) {
     int i;
     int index = 0;
-    //system("CLS");
+    system("CLS");
     cout << "Current Booking" << endl;
     cout << "=================" << endl;
     cout << "||\tNo.\t||\tAccount No.\t||\tAccount Type\t||\tFirst name\t||\tLast name\t||\tPhone number\t||\tBalance\t\t||\n" << endl;

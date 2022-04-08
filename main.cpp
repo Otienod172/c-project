@@ -29,8 +29,8 @@ int main() {
         try {
             employee.validateLogin();
             cin.ignore();
-            system("CLS");
             displayUserInfo(employee);
+            system("pause");
             empChoices.displayEmployeeActions(); // call the employee display
         }
         catch (const string msg) {
@@ -51,8 +51,8 @@ int main() {
         try {
             manager.validateLogin();
             cin.ignore();
-            system("CLS");
             displayUserInfo(manager);
+            system("pause");
             manaChoices.displayManagerActions();
         }
         catch (const string msg) {
